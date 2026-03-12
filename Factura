@@ -1,0 +1,40 @@
+package Negocio;
+
+import java.util.*;
+import java.io.*;
+
+public class Factura implements Serializable {
+    private int numFactura;
+    private Date fecha;
+    private Cliente cliente;
+    private List<DetalleFactura> listaItems;
+    private double total;
+
+    public Factura(int numFactura, Cliente cliente) {
+        this.numFactura = numFactura;
+        this.fecha = new Date();
+        this.cliente = cliente;
+        this.listaItems = new ArrayList<>();
+    }
+
+    public void agregarItem(DetalleFactura item) {
+        listaItems.add(item);
+    }
+
+    public double calcularTotal() {
+        total = 0;
+        for (DetalleFactura item : listaItems) {
+            total += item.calcularSubtotal();
+        }
+        return total;
+    }
+
+    public void generarArchivo(String formato) throws IOException {
+        String nombreArchivo = "Factura_" + numFactura + "." + formato;
+        try (PrintWriter writer = new PrintWriter(nombreArchivo)){
+            writer.println("Factura #"+ numFactura);
+            writer.println("Cliente: "+ cliente.getNombre());
+            writer.println("Fecha: "+ fecha);
+        }
+    }
+}
