@@ -1,0 +1,18 @@
+package Negocio;
+import java.util.List;
+
+public class ExportarHojaCalculo {
+    private String formato;
+    private String rutaArchivo;
+
+    public ExportarHojaCalculo(String formato, String rutaArchivo) {
+        this.formato = formato;
+        this.rutaArchivo = rutaArchivo;
+    }
+    public void exportarFactura(Factura f) {
+        // Implementación para exportar factura como hoja de cálculo
+    }
+    public void exportarInventario(List<Producto> productos) {
+        // Implementación para exportar inventario
+    }
+}
