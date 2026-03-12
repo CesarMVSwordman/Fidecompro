@@ -1,0 +1,15 @@
+package Negocio;
+public class Cliente extends Persona {
+    private String cedula;
+    private String telefono;
+    
+    public Cliente(String cedula, String nombre, String telefono, String correo){
+        super(nombre, correo);
+        this.cedula = cedula;
+        this.telefono = telefono;
+    }
+    public void actualizarDatos(String telefono, String correo){
+        this.telefono = telefono;
+        this.correo = correo;
+    }
+}
